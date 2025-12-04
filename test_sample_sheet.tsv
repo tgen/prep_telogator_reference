@@ -1,0 +1,14 @@
+whale.species	platform	SRR.ID	biosample	estimated.read.depth	organism	common.name	assembly	technology	center	fastq	reference	assemblyreport
+1	PacBio	ERR11029668	SAMEA111380548	10.00	Balaenoptera acutorostrata	minke whale	GCF_949987535.1	Sequel II	WELLCOME SANGER INSTITUTE	/scratch/achan/whale/PacBio/fastq/ERR11029668.fastq.gz	/scratch/achan/forVince/whale.genomes/GCF_949987535.1.fa.gz	/path/to/assemblyreport.txt
+1	PacBio	ERR11029666	SAMEA111380548	8.95	Balaenoptera acutorostrata	minke whale	GCF_949987535.1	Sequel II	WELLCOME SANGER INSTITUTE	/scratch/achan/whale/PacBio/fastq/ERR11029666.fastq.gz	/scratch/achan/forVince/whale.genomes/GCF_949987535.1.fa.gz	/path/to/assemblyreport.txt
+1	PacBio	ERR11029665	SAMEA111380548	10.06	Balaenoptera acutorostrata	minke whale	GCF_949987535.1	Sequel II	WELLCOME SANGER INSTITUTE	/scratch/achan/whale/PacBio/fastq/ERR11029665.fastq.gz	/scratch/achan/forVince/whale.genomes/GCF_949987535.1.fa.gz	/path/to/assemblyreport.txt
+1	PacBio	ERR11029667	SAMEA111380548	8.90	Balaenoptera acutorostrata	minke whale	GCF_949987535.1	Sequel II	WELLCOME SANGER INSTITUTE	/scratch/achan/whale/PacBio/fastq/ERR11029667.fastq.gz	/scratch/achan/forVince/whale.genomes/GCF_949987535.1.fa.gz	/path/to/assemblyreport.txt
+												/path/to/assemblyreport.txt
+2	PacBio	ERR13245297	SAMEA114493142	35.23	Balaenoptera borealis	sei whale	GCA_965194805.1	Revio	WELLCOME SANGER INSTITUTE	/scratch/achan/whale/PacBio/fastq/ERR13245297.fastq.gz	/scratch/achan/forVince/whale.genomes/GCA_965194805.1.fa.gz	/path/to/assemblyreport.txt
+2	PacBio	ERR13245296	SAMEA114493142	26.20	Balaenoptera borealis	sei whale	GCA_965194805.1	Revio	WELLCOME SANGER INSTITUTE	/scratch/achan/whale/PacBio/fastq/ERR13245296.fastq.gz	/scratch/achan/forVince/whale.genomes/GCA_965194805.1.fa.gz	/path/to/assemblyreport.txt
+												/path/to/assemblyreport.txt
+3	PacBio	SRR29146040	SAMN41346796	47.71	Balaenoptera edeni	pygmy Bryde's whale	GCA_052818205.1_BalEdn.hic.v1_genomic.fna.gz	Revio	HONG KONG BAPTIST UNIVERSITY	/scratch/achan/whale/PacBio/fastq/SRR29146040.fastq.gz	/scratch/achan/forVince/whale.genomes/GCA_052818205.1_BalEdn.hic.v1_genomic.fna.gz	/path/to/assemblyreport.txt
+												/path/to/assemblyreport.txt
+4	PacBio	ERR13245265	SAMEA114493144	34.23	Balaenoptera physalus	Fin whale	GCA_965194825.1	Revio	WELLCOME SANGER INSTITUTE	/scratch/achan/whale/PacBio/fastq/ERR13245265.fastq.gz	/scratch/achan/forVince/whale.genomes/GCA_965194825.1.fa.gz	/path/to/assemblyreport.txt
+												/path/to/assemblyreport.txt
+5	PacBio	SRR28920145	SAMN41059645	72.31	Megaptera novaeangliae	humpback whale	GCA_041834305.1	Sequel II	HUMPBACK WHALE GENOME	/scratch/achan/whale/PacBio/fastq/SRR28920145.fastq.gz	/scratch/achan/forVince/whale.genomes/GCA_041834305.1.fa.gz	/path/to/assemblyreport.txt
