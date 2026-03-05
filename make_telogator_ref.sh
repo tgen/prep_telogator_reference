@@ -11,7 +11,7 @@
 
 
 telogator_path="/home/tizatt/tools/telogator2_dev/make_telogator_ref.py"
-#ref="/scratch/tizatt/telogator2/reference/pygmy_brydes_whale/GCA_052818205.1_BalEdn.hic.v1_genomic.chr.fna"
+
 kmers="/home/tizatt/tools/telogator2_dev/resources/kmers.tsv"
 #telegator_ref_out="/scratch/tizatt/telogator2/reference/pygmy_brydes_whale/pygmy_brydes_whale_telegator_ref.fa"
 conda init
