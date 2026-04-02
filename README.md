@@ -1,4 +1,4 @@
-## Prep Telogator: 
+# Prep Telogator: 
 Generating a species-specific Telogator2 reference file
 
 ## Prerequisites
@@ -15,7 +15,18 @@ conda activate prep_telogator
 
 You can run this script from the command line to process your TSV sample sheet. 
 
-Check out the example samplesheet file here: [Example Data](./examples/samplesheet_example.txt)
+Check out the example samplesheet file here: [Example Data](./examples/samplesheet_example.txt).
+
+Required columns for the samplesheet are -> 
+```bash
+(UCSC_common_name-asm/common.name/Common Name), reference, (asm_report/assemblyreport), (assembly/Assembly ID)
+```
+```bash
+reference = "Your downloaded species reference file".
+common.name = "Common name for the species"
+assemblyreport = "Path to a downloaded assembly report for this reference"
+Assembly ID = "An Assembly ID"
+```
 
 ### Basic Command
 
@@ -24,7 +35,9 @@ python process_ref_from_samplesheet.py -s <sample_sheet.tsv> -d <output_director
 ```
 
 
-## Generate 500 kb reference:
+
+#
+# Generate 500 kb reference:
 
 The `generate_500kb_ref.sh` script extracts the first and last 500kb of each chromosome from a reference genome. This is specifically formatted for use with Telogator2.
 
