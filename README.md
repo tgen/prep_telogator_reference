@@ -5,7 +5,7 @@ Generating a species-specific Telogator2 reference file
 
 Before running the scripts, ensure you have the required Python modules installed. 
 
-### Option 1: Using Conda (Recommended)
+### Option: Using Conda (Recommended)
 ```bash
 conda env create -f environment.yml
 conda activate prep_telogator
@@ -21,3 +21,27 @@ Check out the example samplesheet file here: [Example Data](./examples/sampleshe
 
 ```bash
 python process_ref_from_samplesheet.py -s <sample_sheet.tsv> -d <output_directory>
+```
+
+
+## Generate 500 kb reference:
+
+The `generate_500kb_ref.sh` script extracts the first and last 500kb of each chromosome from a reference genome. This is specifically formatted for use with Telogator2.
+
+### Prerequisites
+- **Samtools**: Ensure `samtools` is installed and available in your PATH.
+  ```bash
+  conda install -c bioconda samtools
+  ```
+
+## Usage
+
+To run this on command line:
+
+### Basic Command
+
+
+```bash
+    ./generate_500kb_ref.sh -r <Path to the original reference FASTA> -o <output directory> -i <sample_id>
+```
+sample_id = "name of the output"

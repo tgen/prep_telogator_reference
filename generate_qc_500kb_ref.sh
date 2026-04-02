@@ -1,23 +1,40 @@
 #!/bin/bash
-# generate_500kb_ref.sh
 
-ORIG_REF=$1
-OUT_DIR=$2
-SAMPLE_ID=$3
+# Function to display usage
+usage() {
+    echo "Usage: $0 -r <orig_ref> -o <out_dir> -i <sample_id>"
+    echo "  -r    Path to the original reference FASTA"
+    echo "  -o    Output directory"
+    echo "  -i    Sample ID"
+    exit 1
+}
 
-# Path setup
-SAMTOOLS="singularity exec -B /scratch -B /home -B /tgen_labs /home/tgenref/containers/samtools-1.16.1_bryce.sif samtools"
+# Parse command-line arguments
+while getopts "r:o:i:" opt; do
+    case "$opt" in
+        r) ORIG_REF=$OPTARG ;;
+        o) OUT_DIR=$OPTARG ;;
+        i) SAMPLE_ID=$OPTARG ;;
+        *) usage ;;
+    esac
+done
+
+# Check if required arguments are provided
+if [ -z "$ORIG_REF" ] || [ -z "$OUT_DIR" ] || [ -z "$SAMPLE_ID" ]; then
+    usage
+fi
 
 mkdir -p "${OUT_DIR}"
 
-#RENAMED_REF="${OUT_DIR}/${SAMPLE_ID}.rename.fna"
-PRIMARY_REF="${OUT_DIR}/${SAMPLE_ID}.primary.fna.gz"
-awk '/^>/ {print $0} /^[^>]/ {print toupper($0)}' ${ORIG_REF} > ${PRIMARY_REF} 
+PRIMARY_REF="${OUT_DIR}/${SAMPLE_ID}.primary.fna"
 ENDS_LIST="${OUT_DIR}/${SAMPLE_ID}_ends_500kb.txt"
 FINAL_FASTA="${OUT_DIR}/${SAMPLE_ID}_500kb_telogator.fasta"
 
-echo "Step 3: Generating 500kb end regions..."
-${SAMTOOLS} faidx "${PRIMARY_REF}"
+echo "Step 1: Converting to uppercase..."
+awk '/^>/ {print $0} /^[^>]/ {print toupper($0)}' "${ORIG_REF}" > "${PRIMARY_REF}"
+
+echo "Step 2: Generating 500kb end regions..."
+samtools faidx "${PRIMARY_REF}"
 awk '{
     if ($2 > 500000) {
         # Start region: 1 to 500,000
@@ -27,9 +44,8 @@ awk '{
     }
 }' "${PRIMARY_REF}.fai" > "${ENDS_LIST}"
 
-echo "Step 4: Extracting final sequences..."
-${SAMTOOLS} faidx "${PRIMARY_REF}" --region-file "${ENDS_LIST}" > "${FINAL_FASTA}"
+echo "Step 3: Extracting final sequences..."
+samtools faidx "${PRIMARY_REF}" --region-file "${ENDS_LIST}" > "${FINAL_FASTA}"
 
 echo "SUCCESS: Processed reference for ${SAMPLE_ID} is at ${FINAL_FASTA}"
-# Output the path so a parent script can capture it in a variable
 echo "${FINAL_FASTA}"

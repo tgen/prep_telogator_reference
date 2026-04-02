@@ -2,6 +2,7 @@ name: prep_telogator2
 channels:
   - conda-forge
   - bioconda
+  - samtools
   - defaults
 dependencies:
   - biopython=1.85
