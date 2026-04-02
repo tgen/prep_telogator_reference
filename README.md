@@ -1,3 +1,6 @@
+## Prep Telogator: 
+Generating a species-specific Telogator2 reference file
+
 ## Prerequisites
 
 Before running the scripts, ensure you have the required Python modules installed. 
@@ -7,8 +10,6 @@ Before running the scripts, ensure you have the required Python modules installe
 conda env create -f environment.yml
 conda activate prep_telogator
 ```
-
-### Generating a species-specific Telogator2 reference file
 
 ## Usage
 
