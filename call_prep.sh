@@ -44,11 +44,6 @@ elif [ -z "${report}" ]; then
 fi 
 # -------------------------------------
 
-# Example
-#   report="/tgen_labs/schork/projects2/Data/VGP/reference.genomes/whales/assembly_report/GCA_041834305.1.assembly_report.txt"
-#   dir="/scratch/tizatt/schork/telogator2/reference/"
 
-conda init
-conda activate telogator2
 echo "prep_telogator_ref.sh -r ${ref} -o ${outdir} -n ${name} -e ${report}"
 sbatch prep_telogator_ref.sh -r ${ref} -o ${outdir} -n ${name} -e ${report}

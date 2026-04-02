@@ -3,19 +3,13 @@
 #SBATCH -n 4 # number of cores
 #SBATCH --mem 32G # memory pool for all cores
 #SBATCH -t 0-32:00 # time (D-HH:MM)
-#SBATCH -o /scratch/tizatt/slurm/slurm.telogator.%N.%j.out # STDOUT
-#SBATCH -e /scratch/tizatt/slurm/slurm.telogator.%N.%j.err # STDERR
 #SBATCH --job-name="telogator"
 #SBATCH --mail-type=NONE,FAIL # notifications for job done & fail
-#SBATCH --mail-user=tizatt@tgen.org # send-to
 
 
-telogator_path="/home/tizatt/tools/telogator2_dev/make_telogator_ref.py"
+telogator_path="make_telogator_ref.py"
 
-kmers="/home/tizatt/tools/telogator2_dev/resources/kmers.tsv"
-#telegator_ref_out="/scratch/tizatt/telogator2/reference/pygmy_brydes_whale/pygmy_brydes_whale_telegator_ref.fa"
-conda init
-conda activate telogator2
+kmers="resources/kmers.tsv"
 
 while getopts r:o:n: flag
 do
