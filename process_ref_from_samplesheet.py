@@ -24,9 +24,6 @@ def process_sample_sheet(file_path, base_output_dir):
         
         # 2. Identify the correct column names dynamically
         try:
-            # PRIORITIES: Checks for UCSC name first
-            col_name = get_column_name(df, ['UCSC_common_name-asm', 'common.name', 'organism'], "Common Name")
-            
             # Other columns
             col_ref = get_column_name(df, ['reference', 'TGen.location.reference'], "Reference Genome")
             col_report = get_column_name(df, ['asm_report', 'assemblyreport'], "Assembly Report")
@@ -34,7 +31,6 @@ def process_sample_sheet(file_path, base_output_dir):
             
             print(f"   Detailed Column Mapping:")
             print(f"   - Reference column found: '{col_ref}'")
-            print(f"   - Name column found:      '{col_name}' (Used for Output Dir & -n flag)")
             print(f"   - Report column found:    '{col_report}'")
             
         except ValueError as e:
@@ -42,7 +38,7 @@ def process_sample_sheet(file_path, base_output_dir):
             return
 
         # 3. Drop missing rows based on the columns we just found
-        required_cols = [col_ref, col_name, col_report, col_assembly]
+        required_cols = [col_ref, col_report, col_assembly]
         df.dropna(subset=required_cols, inplace=True)
         
     except FileNotFoundError:
@@ -65,21 +61,18 @@ def process_sample_sheet(file_path, base_output_dir):
         # Get the values using the dynamic column names
         reference = row[col_ref]
         assembly_report = row[col_report]
-        common_name_raw = row[col_name]
+        assembly_id = row[col_assembly]
         
-        # Process the common name
-        common_name_clean = str(common_name_raw).replace(' ', '-').replace('(', '-').replace(')', '-')
-        common_name_clean = common_name_clean.replace('--', '-').strip('-')
         
         # Define the final output directory path
-        output_dir = os.path.join(base_output_dir, common_name_clean)
+        output_dir = os.path.join(base_output_dir, assembly_id)
         
         # Define the final expected reference file path
-        expected_ref_file = os.path.join(output_dir, f"{common_name_clean}.ref.fa")
+        expected_ref_file = os.path.join(output_dir, f"{assembly_id}.ref.fa")
         
         # --- NEW CHECK: Skip if the final reference file already exists ---
         if os.path.isfile(expected_ref_file):
-            print(f"⏩ Skipping {common_name_clean}: Expected reference file already exists at {expected_ref_file}")
+            print(f"⏩ Skipping {assembly_id}: Expected reference file already exists at {expected_ref_file}")
             continue
         # -------------------------------------------------------------------
         # Construct the command
@@ -88,7 +81,7 @@ def process_sample_sheet(file_path, base_output_dir):
             '-r', str(reference),
             '-o', str(output_dir),
             '-a', str(assembly_report),
-            '-n', str(common_name_clean) 
+            '-n', str(assembly_id)
         ]
         
         commands_to_run.append(command)

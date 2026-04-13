@@ -17,13 +17,11 @@ You can run this script from the command line to process your TSV sample sheet.
 
 Check out the example samplesheet file here: [Example Data](./examples/samplesheet_example.txt).
 
-Required columns for the samplesheet are -> 
 ```bash
-(UCSC_common_name-asm/common.name/Common Name), reference, (asm_report/assemblyreport), (assembly/Assembly ID)
+reference, (asm_report/assemblyreport), (assembly/Assembly ID)
 ```
 ```bash
 reference = "Your downloaded species reference file".
-common.name = "Common name for the species"
 assemblyreport = "Path to a downloaded assembly report for this reference"
 Assembly ID = "An Assembly ID"
 ```
