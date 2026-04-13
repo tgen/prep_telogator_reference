@@ -25,13 +25,14 @@ def process_sample_sheet(file_path, base_output_dir):
         # 2. Identify the correct column names dynamically
         try:
             # Other columns
-            col_ref = get_column_name(df, ['reference', 'TGen.location.reference'], "Reference Genome")
+            col_ref = get_column_name(df, ['reference', 'TGen.location.reference'], "Reference Gepnome")
             col_report = get_column_name(df, ['asm_report', 'assemblyreport'], "Assembly Report")
             col_assembly = get_column_name(df, ['assembly'], "Assembly ID")
-            
+             
             print(f"   Detailed Column Mapping:")
             print(f"   - Reference column found: '{col_ref}'")
             print(f"   - Report column found:    '{col_report}'")
+            print(f"   - Assembly ID column found:    '{col_assembly}'")
             
         except ValueError as e:
             print(f"❌ Error: {e}", file=sys.stderr)
@@ -85,6 +86,14 @@ def process_sample_sheet(file_path, base_output_dir):
         ]
         
         commands_to_run.append(command)
+
+        generate500kb_command = [
+            './generate_qc_500kb_ref.sh',
+            '-r', str(reference),
+            '-o', str(output_dir),
+            '-i', str(assembly_id)
+        ]
+        commands_to_run.append(generate500kb_command)
         
     # ---
 
