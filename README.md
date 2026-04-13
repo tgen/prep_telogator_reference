@@ -1,6 +1,8 @@
 # Prep Telogator: 
+```bash
 Generating a species-specific Telogator2 reference file
 Make 500 kb fastq from reference
+```
 
 ## Prerequisites
 
