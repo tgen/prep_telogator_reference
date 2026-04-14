@@ -26,7 +26,7 @@ reference, (asm_report/assemblyreport), (assembly/Assembly ID)
 ```bash
 reference = "Your downloaded species reference file".
 assemblyreport = "Path to a downloaded assembly report for this reference"
-Assembly ID = "An Assembly ID"
+assembly = "An Assembly ID"
 ```
 
 ### Basic Command
